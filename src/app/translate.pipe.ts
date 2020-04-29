@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { LocaleService } from './locale.service';
-import { environment } from '../environments/environment';
+import { ConfigurationService } from './configuration.service';
 
 
 @Pipe({
@@ -16,6 +16,7 @@ export class TranslatePipe implements PipeTransform {
 
   constructor(
     private localeService: LocaleService,
+    private configurationService: ConfigurationService,
   ) {
     this.itemLabels = localeService.itemLabels;
   }
@@ -24,7 +25,7 @@ export class TranslatePipe implements PipeTransform {
   transform(transUnitId: string): string {
     return this.itemLabels.currentLanguage.get(transUnitId)
       ?? this.itemLabels.en.get(transUnitId)
-      ?? (environment.production ? '' : 'Error: translation ID not found!' );
+      ?? (this.configurationService.env.production ? '' : 'Error: translation ID not found!' );
   }
 
 }

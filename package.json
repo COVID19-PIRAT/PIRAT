@@ -10,7 +10,6 @@
     "start-my-en": "ng serve --configuration=en --base-href=/my/en/ --servePath=/ --liveReload=false --port 4210",
     "start-my-ms": "ng serve --configuration=en --base-href=/my/ms/ --servePath=/ --liveReload=false --port 4211",
     "build": "bash build.sh",
-    "build-testproduction": "bash build-testproduction.sh",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

@@ -23,6 +23,11 @@ export class ApiService {
   }
 
 
+  async getEnvironment(): Promise<ApiResponse> {
+    return this._getTo('/configuration/webapp-environment');
+  }
+
+
   async getRegionConfiguration(regionCode: string): Promise<ApiResponse> {
     return this._getTo(`/configuration/region/${regionCode}`);
   }

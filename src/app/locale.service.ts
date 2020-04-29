@@ -1,6 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
-import { environment } from '../environments/environment';
 import * as parser from 'fast-xml-parser';
 
 
@@ -21,7 +20,12 @@ export class LocaleService {
   constructor(
     @Inject(APP_BASE_HREF) public baseHref: string,
   ) {
-    if (baseHref === '/' && !environment.production) {
+  }
+
+
+  async init(env) {
+    const baseHref = this.baseHref;
+    if (baseHref === '/' && !env.production) {
       this.region = 'de';
       this.language = 'en';
       this.baseHref = '/de/en/';
@@ -30,10 +34,7 @@ export class LocaleService {
       this.region = region;
       this.language = language;
     }
-  }
 
-
-  async init() {
     let req = await fetch('/i18n/item-labels/messages.en.xlf');
     this.itemLabels = {
       en: this.processXliff(await req.text()),
