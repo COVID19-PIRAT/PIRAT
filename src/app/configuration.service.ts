@@ -53,6 +53,9 @@ export class ConfigurationService {
 
 
   async startup() {
+    // Init LocaleService
+    await this.localeService.init();
+
     // Fetch environment
     const response1 = await this.apiService.getEnvironment();
     if (response1.error) {
@@ -62,9 +65,6 @@ export class ConfigurationService {
     if (!this.env) {
       throw new Error('Application cannot start because the environment is unknown: ' + response1.data);
     }
-
-    // Init LocaleService
-    await this.localeService.init(this.env);
 
     // Fetch configurations
     const response2 = await this.apiService.getRegionConfiguration(this.localeService.region);

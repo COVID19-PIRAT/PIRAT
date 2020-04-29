@@ -2,6 +2,7 @@
 
 export const environment = {
   production: false,
+  simpleDev: false,
   apiHost: '/api',
 };
 
