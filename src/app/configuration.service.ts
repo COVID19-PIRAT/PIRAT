@@ -16,7 +16,7 @@ export class ConfigurationService {
       reCaptchaSiteKey: '6LfM2-4UAAAAAOfLy7MgifLs1nCi6Ub5cFqWOcky',
     },
     testproduction: {
-      production: true,
+      production: false,
       environment: 'testproduction',
       reCaptchaSiteKey: '6LfM2-4UAAAAAOfLy7MgifLs1nCi6Ub5cFqWOcky',
     },
