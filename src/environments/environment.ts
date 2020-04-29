@@ -1,12 +1,8 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+// Most of the environment variables are managed by the ConfigurationService. Usually, this file should not be modified.
 
 export const environment = {
   production: false,
-  environment: 'development',
   apiHost: '/api',
-  reCaptchaSiteKey: '6LfM2-4UAAAAAOfLy7MgifLs1nCi6Ub5cFqWOcky'
 };
 
 /*

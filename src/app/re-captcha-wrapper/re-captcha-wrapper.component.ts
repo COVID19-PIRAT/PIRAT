@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { RecaptchaComponent } from 'ng-recaptcha';
-import { environment } from '../../environments/environment';
+import { ConfigurationService } from '../configuration.service';
 
 
 @Component({
@@ -14,10 +14,13 @@ export class ReCaptchaWrapperComponent implements OnInit {
 
   @ViewChild(RecaptchaComponent) reCaptchaElement: RecaptchaComponent;
 
-  siteKey = environment.reCaptchaSiteKey;
+  siteKey: string;
 
 
-  constructor() {
+  constructor(
+    private configurationService: ConfigurationService,
+  ) {
+    this.siteKey = configurationService.env.reCaptchaSiteKey;
   }
 
 

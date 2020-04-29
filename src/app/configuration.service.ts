@@ -9,6 +9,30 @@ import { AddressFormat, addressFormatFromApi } from './_types/AddressFormat';
 })
 export class ConfigurationService {
 
+  private readonly ENVIRONMENTS = {
+    development: {
+      production: false,
+      environment: 'development',
+      reCaptchaSiteKey: '6LfM2-4UAAAAAOfLy7MgifLs1nCi6Ub5cFqWOcky',
+    },
+    testproduction: {
+      production: true,
+      environment: 'testproduction',
+      reCaptchaSiteKey: '6LfM2-4UAAAAAOfLy7MgifLs1nCi6Ub5cFqWOcky',
+    },
+    production: {
+      production: true,
+      environment: 'production',
+      reCaptchaSiteKey: '6LegBOgUAAAAAIqr5lojeb-H-znxM6zLFbFcGfyc',
+    }
+  };
+
+  env: {
+    production: boolean,
+    environment: string,
+    reCaptchaSiteKey: string,
+  };
+
   countryName: string;
 
   addressFormat: AddressFormat;
@@ -29,17 +53,27 @@ export class ConfigurationService {
 
 
   async startup() {
+    // Fetch environment
+    const response1 = await this.apiService.getEnvironment();
+    if (response1.error) {
+      throw new Error('Application cannot start because the environment name cannot be fetched.');
+    }
+    this.env = this.ENVIRONMENTS[response1.data];
+    if (!this.env) {
+      throw new Error('Application cannot start because the environment is unknown: ' + response1.data);
+    }
+
     // Init LocaleService
-    await this.localeService.init();
+    await this.localeService.init(this.env);
 
     // Fetch configurations
-    const response = await this.apiService.getRegionConfiguration(this.localeService.region);
-    if (response.error) {
+    const response2 = await this.apiService.getRegionConfiguration(this.localeService.region);
+    if (response2.error) {
       throw new Error('Application cannot start because the region configuration cannot be fetched.');
     }
-    this.countryName = response.data.countryName;
-    this.addressFormat = addressFormatFromApi(response.data.addressFormat, this.localeService.language);
-    await this.prepareCategories(response.data);
+    this.countryName = response2.data.countryName;
+    this.addressFormat = addressFormatFromApi(response2.data.addressFormat, this.localeService.language);
+    await this.prepareCategories(response2.data);
   }
 
 

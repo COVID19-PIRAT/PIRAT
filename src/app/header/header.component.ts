@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-// import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
-import { environment } from '../../environments/environment';
 import { LocaleService } from '../locale.service';
+import { ConfigurationService } from '../configuration.service';
 
 
 @Component({
@@ -29,6 +28,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     public localeService: LocaleService,
+    private configurationService: ConfigurationService,
   ) {
     this.currentRegionLangOption = this.regionLangOptions.find(({ href }) =>
       href === localeService.baseHref);
@@ -45,26 +45,11 @@ export class HeaderComponent implements OnInit {
 
 
   isProduction() {
-    return environment.environment === 'production';
+    return this.configurationService.env.production;
   }
 
 
   changeRegionOrLang(href) {
     window.location.href = href + this.url;
-  }
-
-
-  onShown() {
-
-  }
-
-
-  onHidden() {
-
-  }
-
-
-  isOpenChange() {
-
   }
 }
