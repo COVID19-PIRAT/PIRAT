@@ -39,3 +39,18 @@ Afterwards, commit the changes in the i18n repository.
 <a href="http://translate.pirat-tool.com/engage/pirat/?utm_source=widget">
 <img src="http://translate.pirat-tool.com/widgets/pirat/-/multi-auto.svg" width="600" alt="Translation Status" />
 </a>
+
+
+## Contributing
+
+We follow a slightly trimmed-down version of the Gitflow Workflow [1, 2]. We have four type of branches:
+
+- `master` - Deployed on the production page
+- `develop` - Deployed on the internal test page
+- `feature`-branches - They start with `feature/`
+- `hotfix`-branches - They start with `hotfix/`
+
+[1] https://nvie.com/posts/a-successful-git-branching-model/ \
+[2] https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+
+
