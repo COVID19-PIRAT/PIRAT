@@ -46,6 +46,10 @@ export class ConfigurationService {
 
   gitCommits: {
     frontend: string,
+    backend: string,
+  } = {
+    frontend: undefined,
+    backend: undefined,
   };
 
 
@@ -84,9 +88,13 @@ export class ConfigurationService {
     const response3 = await fetch('/assets/content/git_commit');
     const gitCommitFrontend = await response3.text();
     if (gitCommitFrontend[0] !== '#') {
-      this.gitCommits = {
-        frontend: gitCommitFrontend,
-      }
+      this.gitCommits.frontend = gitCommitFrontend;
+    }
+
+    // Fetch Git commit hash of the backend
+    const response4 = await this.apiService.getBackendVersion();
+    if (response4.status !== 204) {
+      this.gitCommits.backend = response4.data;
     }
   }
 

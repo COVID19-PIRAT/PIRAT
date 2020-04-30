@@ -28,6 +28,11 @@ export class ApiService {
   }
 
 
+  async getBackendVersion(): Promise<ApiResponse> {
+    return this._getTo('/configuration/version');
+  }
+
+
   async getRegionConfiguration(regionCode: string): Promise<ApiResponse> {
     return this._getTo(`/configuration/region/${regionCode}`);
   }
