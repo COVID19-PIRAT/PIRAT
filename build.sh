@@ -2,13 +2,33 @@
 
 set -e
 
-ng build --configuration=production,de --base-href=/de/de/ --outputPath=dist/de/de
-ng build --configuration=production,en --base-href=/de/en/ --outputPath=dist/de/en
+ng build --configuration=production --localize
 
-ng build --configuration=production,de --base-href=/at/de/ --outputPath=dist/at/de
-ng build --configuration=production,en --base-href=/at/en/ --outputPath=dist/at/en
+# Germany
+mkdir dist/de
+cp -r dist/pirat/de dist/de
+sed -i 's/<base href="/<base href="\/de/' dist/de/de/index.html
+cp -r dist/pirat/en dist/de
+sed -i 's/<base href="/<base href="\/de/' dist/de/en/index.html
 
-ng build --configuration=production,it --base-href=/it/it/ --outputPath=dist/it/it
-ng build --configuration=production,en --base-href=/it/en/ --outputPath=dist/it/en
+# Austria
+mkdir dist/at
+cp -r dist/pirat/de dist/at
+sed -i 's/<base href="/<base href="\/at/' dist/at/de/index.html
+cp -r dist/pirat/en dist/at
+sed -i 's/<base href="/<base href="\/at/' dist/at/en/index.html
 
-ng build --configuration=production,en --base-href=/my/en/ --outputPath=dist/my/en
+# Italy
+mkdir dist/it
+cp -r dist/pirat/it dist/it
+sed -i 's/<base href="/<base href="\/it/' dist/it/it/index.html
+cp -r dist/pirat/en dist/it
+sed -i 's/<base href="/<base href="\/it/' dist/it/en/index.html
+
+# Malaysia
+mkdir dist/my
+cp -r dist/pirat/en dist/my
+sed -i 's/<base href="/<base href="\/my/' dist/my/en/index.html
+
+
+rm -r dist/pirat
