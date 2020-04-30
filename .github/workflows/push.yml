@@ -18,6 +18,9 @@ jobs:
         with:
           submodules: 'true'
 
+      - name: write commit hash to file
+        run: echo ${{ github.sha }} > src/assets/content/git_commit
+
       - name: set branch env
         run: |
           echo "::set-env name=BRANCH::${GITHUB_REF##*/}"

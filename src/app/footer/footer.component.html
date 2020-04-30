@@ -2,5 +2,15 @@
   <div class="centered-block">
     <div><a routerLink="/impressum" i18n="@@footer__imprint">Legal notice</a></div>
     <div><a routerLink="/datenschutz" i18n="@@footer__dataPrivacy">Privacy policy</a></div>
+    <br />
+    <div>
+      <p *ngIf="!configurationService.env.production && configurationService.gitCommits">
+        Frontend version:
+        <a
+          href="https://github.com/COVID19-PIRAT/frontend/tree/{{ configurationService.gitCommits.frontend }}"
+          target="_blank"
+        >{{ configurationService.gitCommits.frontend.substring(0, 7) }}</a>
+      </p>
+    </div>
   </div>
 </footer>

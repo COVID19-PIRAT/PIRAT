@@ -44,6 +44,10 @@ export class ConfigurationService {
     personnelQualification: new Map<string, string>(),  // value -> language string
   };
 
+  gitCommits: {
+    frontend: string,
+  };
+
 
   constructor(
     private apiService: ApiService,
@@ -53,6 +57,7 @@ export class ConfigurationService {
 
 
   async startup() {
+    // TODO Parallelize requests as far as possible
     // Init LocaleService
     await this.localeService.init();
 
@@ -74,6 +79,15 @@ export class ConfigurationService {
     this.countryName = response2.data.countryName;
     this.addressFormat = addressFormatFromApi(response2.data.addressFormat, this.localeService.language);
     await this.prepareCategories(response2.data);
+
+    // Fetch Git commit hash of the frontend
+    const response3 = await fetch('/assets/content/git_commit');
+    const gitCommitFrontend = await response3.text();
+    if (gitCommitFrontend[0] !== '#') {
+      this.gitCommits = {
+        frontend: gitCommitFrontend,
+      }
+    }
   }
 
 

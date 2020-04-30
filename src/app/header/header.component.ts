@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     public localeService: LocaleService,
-    private configurationService: ConfigurationService,
+    public configurationService: ConfigurationService,
   ) {
     this.currentRegionLangOption = this.regionLangOptions.find(({ href }) =>
       href === localeService.baseHref);
