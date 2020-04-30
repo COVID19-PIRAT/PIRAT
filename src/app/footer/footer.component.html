@@ -2,15 +2,22 @@
   <div class="centered-block">
     <div><a routerLink="/impressum" i18n="@@footer__imprint">Legal notice</a></div>
     <div><a routerLink="/datenschutz" i18n="@@footer__dataPrivacy">Privacy policy</a></div>
-    <br />
-    <div>
-      <p *ngIf="!configurationService.env.production && configurationService.gitCommits">
+    <br/>
+    <div *ngIf="!configurationService.env.production">
+      <ng-container *ngIf="configurationService.gitCommits.frontend">
         Frontend version:
         <a
           href="https://github.com/COVID19-PIRAT/frontend/tree/{{ configurationService.gitCommits.frontend }}"
           target="_blank"
-        >{{ configurationService.gitCommits.frontend.substring(0, 7) }}</a>
-      </p>
+        >{{ configurationService.gitCommits.frontend.substring(0, 7) }}</a><br/>
+      </ng-container>
+      <ng-container *ngIf="configurationService.gitCommits.backend">
+        Backend version:
+        <a
+          href="https://github.com/COVID19-PIRAT/backend/tree/{{ configurationService.gitCommits.backend }}"
+          target="_blank"
+        >{{ configurationService.gitCommits.backend.substring(0, 7) }}</a>
+      </ng-container>
     </div>
   </div>
 </footer>
