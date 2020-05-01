@@ -3,7 +3,12 @@
     <div><a routerLink="/impressum" i18n="@@footer__imprint">Legal notice</a></div>
     <div><a routerLink="/datenschutz" i18n="@@footer__dataPrivacy">Privacy policy</a></div>
     <br/>
+    <div class="attribution" i18n="@@footer__flaticonAttribution">
+      This site uses icons made by <a href="https://www.flaticon.com/authors/freepik">Freepik</a>
+      from <a href="www.flaticon.com">www.flaticon.com</a>.
+    </div>
     <div *ngIf="!configurationService.env.production">
+      <br />
       <ng-container *ngIf="configurationService.gitCommits.frontend">
         Frontend version:
         <a
