@@ -13,12 +13,12 @@ export class ConfigurationService {
     development: {
       production: false,
       environment: 'development',
-      reCaptchaSiteKey: '6LfM2-4UAAAAAOfLy7MgifLs1nCi6Ub5cFqWOcky',
+      reCaptchaSiteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
     },
     testproduction: {
       production: false,
       environment: 'testproduction',
-      reCaptchaSiteKey: '6LfM2-4UAAAAAOfLy7MgifLs1nCi6Ub5cFqWOcky',
+      reCaptchaSiteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
     },
     production: {
       production: true,
