@@ -37,8 +37,8 @@ export class HomeComponent implements OnInit {
       link: 'https://server.unesty.net'
     },
     {
-      image: 'wirvsvirus.png',
-      name: 'WirVsVirus Hackathon',
+      image: 'solutionenabler.png',
+      name: 'Solution Enabler Programm',
       link: 'https://wirvsvirushackathon.org'
     },
   ];
