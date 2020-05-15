@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
 
 
   statistics = {
-    date: '25.04.2020, 22:00',
+    date: '15.05.2020, 15:00',
     availableResources: {
       devices: [
         { category: 'VORTEXER', number: 7 },
