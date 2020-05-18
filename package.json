@@ -30,7 +30,7 @@
     "@ngx-i18nsupport/tooling": "^8.0.3",
     "angular-tslint-rules": "^1.20.4",
     "bootstrap": "^4.5.0",
-    "fast-xml-parser": "^3.16.0",
+    "fast-xml-parser": "^3.17.0",
     "ng-recaptcha": "^5.0.0",
     "ngx-markdown": "^9.0.0",
     "papaparse": "^5.2.0",
